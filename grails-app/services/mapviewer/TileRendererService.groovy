@@ -30,7 +30,7 @@ class TileRendererService
 			srs
 		)
 		
-		Shapefile borders = new Shapefile( 'world_adm0.shp' )
+		Shapefile borders = new Shapefile( 'data/world_adm0.shp' )
 		
 		borders.style = fill( opacity: 0 ) + stroke( color: 'blue' )
 		
