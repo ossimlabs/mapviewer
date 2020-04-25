@@ -1,7 +1,9 @@
 package mapviewer
 
 import geoscript.geom.Bounds
+import geoscript.layer.Layer
 import geoscript.layer.Shapefile
+import geoscript.workspace.PostGIS
 import static geoscript.style.Symbolizers.*
 
 import java.awt.Color
@@ -30,9 +32,17 @@ class TileRendererService
 			srs
 		)
 		
-		Shapefile borders = new Shapefile( 'data/world_adm0.shp' )
+		Shapefile countries = new Shapefile( 'data/world_adm0.shp' )
+		Shapefile states = new Shapefile( 'data/statesp020.shp' )
 		
-		borders.style = fill( opacity: 0 ) + stroke( color: 'blue' )
+		countries.style = fill( opacity: 0 ) + stroke( color: 'blue' )
+		states.style = fill( opacity: 0 ) + stroke( color: 'blue' )
+		
+		PostGIS postgis = new PostGIS( 'geodatadb', user: 'postgres' )
+		Layer cities = postgis['city']
+		
+		cities.style = shape( type: "star", size: 25, color: "red" )
+		
 		
 		GeoScriptMap map = new GeoScriptMap(
 			width: width,
@@ -40,12 +50,15 @@ class TileRendererService
 			bounds: bounds,
 			proj: bounds.proj,
 			layers: [
-				borders
+				countries,
+				states,
+				cities
 			]
 		)
 		
 		map.render( ostream )
 		map.close()
+		postgis.close()
 
 //		BufferedImage image = new BufferedImage( width, height, BufferedImage.TYPE_INT_ARGB )
 //		Graphics2D g2d = image.createGraphics()

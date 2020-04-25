@@ -1,10 +1,15 @@
 package mapviewer
 
+import geoscript.GeoScript
+import geoscript.geom.Point
 import grails.gorm.transactions.Transactional
+import org.springframework.context.MessageSource
+
 
 @Transactional
 class CityService
 {
+	MessageSource messageSource
 	
 	def loadCSV()
 	{
@@ -22,10 +27,13 @@ class CityService
 				latitude: tokens[5].toDouble()
 			)
 			
+			city.location = GeoScript.unwrap( new Point( city.longitude, city.latitude ) )
+			city.location.setSRID( 4326 )
+			
 			if ( !city.save() )
 			{
 				city.errors.allErrors.each {
-					println it
+					println messageSource.getMessage( it, Locale.default )
 				}
 			}
 		}

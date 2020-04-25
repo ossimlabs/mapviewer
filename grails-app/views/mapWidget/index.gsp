@@ -13,7 +13,8 @@
         <asset:javascript src="mapWidget.js"/>
         <asset:script>
             $(document).ready(function(){
-                MapWidget.init();
+                var mapParams = ${raw(mapParams?.encodeAsJSON())};
+                MapWidget.init(mapParams);
             });
         </asset:script>
         <asset:deferredScripts/>

@@ -4,7 +4,9 @@ class MapWidgetController
 {
     TileRendererService tileRendererService
     
-    def index() { }
+    def index() { [
+      mapParams: [:]
+    ]}
     
     def getTile()
     {
