@@ -32,8 +32,10 @@ spring:
         - '*.properties'
 management:
   endpoints:
-    enabled-by-default: false
-
+      enabled-by-default: true
+      web:
+          exposure:
+              include: info, health, metrics 
 ---
 grails:
   mime:
