@@ -2,10 +2,10 @@ package mapviewer
 
 class BootStrap
 {
-	CityService cityService
+	CsvService csvService
 	
 	def init = { servletContext ->
-		cityService.loadCSV()
+		csvService.loadCSV()
 	}
 	
 	def destroy = {

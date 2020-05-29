@@ -1,5 +1,7 @@
 package mapviewer
 
+import grails.plugin.dropwizard.metrics.meters.Metered
+
 class MapWidgetController
 {
     TileRendererService tileRendererService
@@ -8,6 +10,7 @@ class MapWidgetController
       mapParams: [:]
     ]}
     
+    @Metered('some meter')
     def getTile()
     {
         render tileRendererService.getTile( params )

@@ -35,6 +35,8 @@ configurations {
 dependencies {
 	compile 'org.webjars:openlayers:4.6.5'
 	
+	compile "org.grails.plugins:dropwizard-metrics:2.0.0.RC1"
+
 	compile( "org.geoscript:geoscript-groovy:1.14.0" ) {
 		exclude module: "ehcache"
 		exclude module: "groovy-all"

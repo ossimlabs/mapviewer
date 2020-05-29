@@ -1,41 +1,18 @@
 package mapviewer
 
-import geoscript.GeoScript
-import geoscript.geom.Point
-import grails.gorm.transactions.Transactional
-import org.springframework.context.MessageSource
+import grails.gorm.services.Service
 
+@Service(City)
+interface CityService {
 
-@Transactional
-class CityService
-{
-	MessageSource messageSource
-	
-	def loadCSV()
-	{
-		File csvFile = new File( 'data/cities.csv' )
-		
-		csvFile.eachLine { String line ->
-			List<String> tokens = line.split( ',' )
-			
-			City city = new City(
-				name: tokens[0],
-				country: tokens[1],
-				population: tokens[2]?.toInteger(),
-				capital: tokens[3] == 'Y',
-				longitude: tokens[4]?.toDouble(),
-				latitude: tokens[5].toDouble()
-			)
-			
-			city.location = GeoScript.unwrap( new Point( city.longitude, city.latitude ) )
-			city.location.setSRID( 4326 )
-			
-			if ( !city.save() )
-			{
-				city.errors.allErrors.each {
-					println messageSource.getMessage( it, Locale.default )
-				}
-			}
-		}
-	}
+    City get(Serializable id)
+
+    List<City> list(Map args)
+
+    Long count()
+
+    void delete(Serializable id)
+
+    City save(City city)
+
 }
