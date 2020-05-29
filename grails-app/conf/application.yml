@@ -117,8 +117,11 @@ environments:
       url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
   production:
     dataSource:
-      dbCreate: none
-      url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+      dbCreate: update
+#    Use this one for outside of docker
+      url: jdbc:postgresql:geodatadb
+#    Use this one for inside of docker
+#        url: jdbc:postgresql://host.docker.internal/geodatadb
       properties:
         jmxEnabled: true
         initialSize: 5

@@ -120,8 +120,11 @@ tasks.withType( Test ) {
 	systemProperty "webdriver.gecko.driver", System.getProperty( 'webdriver.gecko.driver' )
 }
 
-
 assets {
-	minifyJs = true
-	minifyCss = true
+        minifyJs = true
+        minifyCss = true
+        excludes = [
+           '**/*deps.js',
+           '**/*debug.js'
+        ]
 }
