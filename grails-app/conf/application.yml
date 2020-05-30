@@ -121,9 +121,9 @@ environments:
     dataSource:
       dbCreate: update
 #    Use this one for outside of docker
-      url: jdbc:postgresql:geodatadb
+#      url: jdbc:postgresql:geodatadb
 #    Use this one for inside of docker
-#        url: jdbc:postgresql://host.docker.internal/geodatadb
+      url: jdbc:postgresql://host.docker.internal/geodatadb
       properties:
         jmxEnabled: true
         initialSize: 5
