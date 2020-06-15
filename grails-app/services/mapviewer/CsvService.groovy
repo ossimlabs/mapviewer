@@ -11,6 +11,8 @@ class CsvService
 {
 	MessageSource messageSource
 	
+	// apply custom metrics timer to this method
+	// this is where the cities are loaded
 	def loadCSV()
 	{
 		File csvFile = new File( 'data/cities.csv' )

@@ -5,8 +5,10 @@ import static org.springframework.http.HttpStatus.*
 
 class CityController {
 
+    
     CityService cityService
 
+                            // key value pairs <var in view>:<Var in controller>
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {

@@ -1,3 +1,7 @@
-// Place your Spring DSL code here
-beans = {
+import mapviewer.SimpleMetricsManager
+import mapviewer.SimpleTimer
+
+beans = {     
+    simpleMetricsManager (SimpleMetricsManager)
+    simpleTimer (SimpleTimer)
 }

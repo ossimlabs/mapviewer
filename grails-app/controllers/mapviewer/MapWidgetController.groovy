@@ -1,18 +1,23 @@
 package mapviewer
-
-import grails.plugin.dropwizard.metrics.meters.Metered
+import io.micrometer.core.instrument.Clock;
+import io.micrometer.core.instrument.Timer;
+import org.springframework.web.bind.annotation.GetMapping;
 
 class MapWidgetController
 {
-    TileRendererService tileRendererService
-    
+    @Autowired TileRendererService tileRendererService
+    @Autowired SimpleMetricsManager simpleMetricsManager
+    @Autowired SimpleTimer SimpleTimer
+
     def index() { [
       mapParams: [:]
     ]}
     
-    @Metered('some meter')
+    @GetMapping("/mapWidget/getTile")
     def getTile()
     {
-        render tileRendererService.getTile( params )
+        simpleTimer.set(Timer.start(Clock.SYSTEM));
+        render tileRendererService.getTile(params)
+        simpleMetricsManager.trackTimerMetrics("metric.transaction", "uri", "/mapWidget/getTile");
     }
 }

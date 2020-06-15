@@ -3,8 +3,7 @@ package mapviewer
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-
-class CityServiceSpec extends Specification implements ServiceUnitTest<CityService>{
+class MeterServiceSpec extends Specification implements ServiceUnitTest<MeterService>{
 
     def setup() {
     }
