@@ -10,9 +10,9 @@ buildscript {
 	}
 }
 
-// plugins {
-//     id "com.google.cloud.tools.jib" version "2.4.0"
-// }
+plugins {
+    id "com.google.cloud.tools.jib" version "2.4.0"
+}
 
 version "0.1"
 group "mapviewer"
@@ -31,6 +31,7 @@ repositories {
 
 configurations.all {
     exclude module: 'groovy-all'
+	exclude module: 'javaee-api'
 }
 
 configurations {
@@ -133,15 +134,26 @@ tasks.withType( Test ) {
 	systemProperty "webdriver.gecko.driver", System.getProperty( 'webdriver.gecko.driver' )
 }
 
-// jib {
-//     from {
-//         image = "nexus-docker-public-hosted.ossim.io/openjdk8:alpine-slim"
-//     }
-//     to {
-//         image = "nexus-docker-public-hosted.ossim.io/mapviewer"
-//     }
-//     containerizingMode = 'packaged'
-// }
+jib {
+    from {
+        image = "adoptopenjdk/openjdk8:alpine-slim"
+    }
+    to {
+        image = "nexus-docker-public-hosted.ossim.io/mapviewer"
+    }
+    containerizingMode = 'packaged'
+	 extraDirectories {
+        paths {
+            path {
+                from = file('data')
+                into = "/data"                
+            }
+        }
+        // permissions = [
+        //     "/app/run_java.sh": "755"
+        // ]
+    }
+}
 
 assets {
         minifyJs = true
