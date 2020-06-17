@@ -10,6 +10,10 @@ buildscript {
 	}
 }
 
+// plugins {
+//     id "com.google.cloud.tools.jib" version "2.4.0"
+// }
+
 version "0.1"
 group "mapviewer"
 
@@ -23,6 +27,10 @@ apply plugin: "org.grails.grails-gsp"
 repositories {
 	maven { url 'https://nexus.ossim.io/repository/all-repos' }
 	maven { url 'https://repo.grails.org/grails/core' }
+}
+
+configurations.all {
+    exclude module: 'groovy-all'
 }
 
 configurations {
@@ -124,6 +132,16 @@ tasks.withType( Test ) {
 	systemProperty "webdriver.chrome.driver", System.getProperty( 'webdriver.chrome.driver' )
 	systemProperty "webdriver.gecko.driver", System.getProperty( 'webdriver.gecko.driver' )
 }
+
+// jib {
+//     from {
+//         image = "nexus-docker-public-hosted.ossim.io/openjdk8:alpine-slim"
+//     }
+//     to {
+//         image = "nexus-docker-public-hosted.ossim.io/mapviewer"
+//     }
+//     containerizingMode = 'packaged'
+// }
 
 assets {
         minifyJs = true
