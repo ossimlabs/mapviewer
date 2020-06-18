@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM adoptopenjdk/openjdk8:alpine-slim
 COPY ./data /data
 COPY build/libs/mapviewer-*.jar /mapviewer.jar
 EXPOSE 8080
