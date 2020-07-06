@@ -130,17 +130,6 @@ tasks.withType( Test ) {
 	systemProperty "webdriver.gecko.driver", System.getProperty( 'webdriver.gecko.driver' )
 }
 
-<<<<<<< HEAD
-// jib {
-//     from {
-//         image = "nexus-docker-public-hosted.ossim.io/openjdk8:alpine-slim"
-//     }
-//     to {
-//         image = "nexus-docker-public-hosted.ossim.io/mapviewer"
-//     }
-//     containerizingMode = 'packaged'
-// }
-=======
 jib {
     from {
         image = "adoptopenjdk/openjdk8:alpine-slim"
@@ -161,7 +150,6 @@ jib {
         // ]
     }
 }
->>>>>>> c0119faebabe42cd43abe38502227bc852f5a028
 
 assets {
         minifyJs = true

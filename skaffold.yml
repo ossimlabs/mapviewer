@@ -5,7 +5,7 @@ metadata:
 build:
   artifacts:
     - image: nexus-docker-public-hosted.ossim.io/mapviewer
-      jib: {}
+      # jib: {}
 deploy:
   kubectl:
     manifests:

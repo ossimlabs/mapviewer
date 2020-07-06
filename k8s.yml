@@ -30,4 +30,4 @@ spec:
     app: mapviewer
   ports:
     - port: 8080
-  type: NodePort
+  type: LoadBalancer
