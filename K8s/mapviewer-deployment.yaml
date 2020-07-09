@@ -20,14 +20,3 @@ spec:
   selector:
     matchLabels:
       app: mapviewer
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mapviewer
-spec:
-  selector:
-    app: mapviewer
-  ports:
-    - port: 8080
-  type: LoadBalancer

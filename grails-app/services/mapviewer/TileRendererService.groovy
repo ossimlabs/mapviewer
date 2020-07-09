@@ -38,7 +38,7 @@ class TileRendererService
 		countries.style = fill( opacity: 0 ) + stroke( color: 'blue' )
 		states.style = fill( opacity: 0 ) + stroke( color: 'blue' )
 		
-		PostGIS postgis = new PostGIS('geodatadb', user: 'postgres', host: 'host.docker.internal')
+		PostGIS postgis = new PostGIS('geodatadb', user: 'postgres', host: 'omar-dev.cfussmnw2zzg.us-east-1.rds.amazonaws.com', password: "omarftw123")
 		Layer cities = postgis['city']
 		
 		cities.style = shape( type: "star", size: 25, color: "red" )

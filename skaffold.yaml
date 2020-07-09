@@ -4,9 +4,14 @@ metadata:
   name: mapviewer
 build:
   artifacts:
-  - image: nexus-docker-public-hosted.ossim.io/mapviewer
-   # jib: {}
+    - image: nexus-docker-public-hosted.ossim.io/mapviewer
+      # jib: {}
 deploy:
   kubectl:
     manifests:
-    - kubernetes.yml
+    - K8s/mapviewer-deployment.yaml
+    - K8s/mapviewer-service.yaml
+    - K8s/mapviewer-ingress.yaml
+    #- k8s.yaml
+
+   

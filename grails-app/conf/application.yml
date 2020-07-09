@@ -105,7 +105,7 @@ dataSource:
   jmxExport: true
   driverClassName: org.postgresql.Driver
   username: postgres
-  password: ''
+  password: 'omarftw123'
   dialect: 'org.hibernate.spatial.dialect.postgis.PostgisDialect'
 
 environments:
@@ -123,7 +123,7 @@ environments:
       # Use this one for outside of docker
       # url: jdbc:postgresql:geodatadb
       # Use this one for inside of docker
-      url: jdbc:postgresql://host.docker.internal/geodatadb
+      url: jdbc:postgresql://omar-dev.cfussmnw2zzg.us-east-1.rds.amazonaws.com/geodatadb
       properties:
         jmxEnabled: true
         initialSize: 5

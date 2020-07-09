@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":[""],"port":443,"protocol":"HTTPS",
+    "serviceName":"camel-caravan:mapviewer","ingressName":"camel-caravan:mapviewer","hostname":"mapviewer.ossim.io","path":"/",
+    "allNodes":false}]'
+  name: mapviewer
+  namespace: camel-caravan
+spec:
+  rules:
+  - host: mapviewer.ossim.io
+    http:
+      paths:
+        - backend:
+            serviceName: mapviewer
+            servicePort: 8080
+          path: /
+  # tls:
+  #   - hosts:
+  #       - lidar.ossim.io
+  #     secretName: ssl-certs
+status:
+  loadBalancer:
+    ingress:
+      - hostname: aaac6bc42260c4b60a9e580e4febc19f-e69fe95399e829a2.elb.us-east-1.amazonaws.com
