@@ -12,6 +12,6 @@ deploy:
     - K8s/mapviewer-deployment.yaml
     - K8s/mapviewer-service.yaml
     - K8s/mapviewer-ingress.yaml
-    #- k8s.yaml
+ 
 
    
