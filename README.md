@@ -16,5 +16,5 @@ need to have java, gradle, and grails installed
 # To run with local K8S
 ## In dev mode
 skaffold dev 
-## In prod mod
+## In prod mode
 skaffold run
